@@ -1,4 +1,4 @@
-== Noggin ==
+== Ultramarine Account System ==
 
 {{_("Hello %(name)s,", name=user.name)}}
 
@@ -8,4 +8,4 @@
 
 {{_("If you did not set the email address %(address)s in your account %(username)s, you can ignore this email.", username=user.username, address=address)}}
 
--- {{_("The Noggin team")}}
+-- {{_("The Ultramarine Linux team")}}
