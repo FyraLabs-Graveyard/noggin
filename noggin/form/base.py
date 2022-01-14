@@ -112,7 +112,7 @@ class TypeAndStringWidget(TextInput):
         html = [
             '<div class="input-group">',
             '<div class="input-group-prepend">',
-            field.subfields[0](class_="custom-select"),
+            field.subfields[0](class_="form-select"),
             '</div>',
             field.subfields[1](**kwargs),
             '<div class="input-group-append">',
