@@ -1,4 +1,4 @@
-/*CSS rules for the 'centos' noggin theme */
+/*CSS rules for the 'ultramarine' noggin theme */
 
 body {
   font-family: 'Montserrat', sans-serif;
@@ -16,7 +16,7 @@ body {
 .row { margin-left: 0 }
 
 .btn-primary,
-.btn-outline-primary { color: #5e81ac; background-color: #fff; border-color: #81a1c1; }
+.btn-outline-primary { color: #2e4370; background-color: rgb(255, 255, 255); border-color: #364575; }
 .btn-outline-primary:hover, 
 .btn-primary:hover { color: #fff; background-color: #5e81ac; border-color: #81a1c1; }
 a, .btn-link { color: #5e81ac }
@@ -35,4 +35,7 @@ div.media.align-items-center img { border-radius: 50%; }
 
 ul.list-unstyled.row li {
   padding-left: 0px;
+}
+.navbar-brand {
+  padding-left: 10px;
 }
