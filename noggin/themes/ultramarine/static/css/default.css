@@ -39,3 +39,6 @@ ul.list-unstyled.row li {
 .navbar-brand {
   padding-left: 10px;
 }
+.nav-link {
+  font-weight: 500;
+}
