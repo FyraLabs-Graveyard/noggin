@@ -1,0 +1,73 @@
+tox-lint:
+  only:
+    - stable
+    - dev
+  stage: test
+  image: registry.fedoraproject.org/fedora-minimal:latest
+  # simply just run the docker image
+  script:
+    - microdnf install -y python3-pip python3-devel python3-virtualenv tox git
+    - tox -e lint
+
+tox-format:
+  only:
+    - stable
+    - dev
+  stage: test
+  image: registry.fedoraproject.org/fedora-minimal:latest
+  # simply just run the docker image
+  script:
+    - microdnf install -y python3-pip python3-devel python3-virtualenv tox git
+    - tox -e format
+
+tox-licenses:
+  only:
+    - stable
+    - dev
+  stage: test
+  image: registry.fedoraproject.org/fedora-minimal:latest
+  # simply just run the docker image
+  script:
+    - microdnf install -y python3-pip python3-devel python3-virtualenv tox git
+    - tox -e licenses
+
+tox-covclean:
+  only:
+    - stable
+    - dev
+  stage: test
+  image: registry.fedoraproject.org/fedora-minimal:latest
+  # simply just run the docker image
+  script:
+    - microdnf install -y python3-pip python3-devel python3-virtualenv tox git
+    - tox -e covclean
+
+tox-testenv:
+  only:
+    - stable
+    - dev
+  stage: test
+  image: registry.fedoraproject.org/fedora-minimal:latest
+  # simply just run the docker image
+  script:
+    - microdnf install -y python3-pip python3-devel python3-virtualenv tox git
+    - tox -e testenv
+
+docker-build:
+  only:
+    - stable
+    - dev
+  stage: build
+  image: docker
+  script:
+    - |
+      if [[ "$CI_COMMIT_BRANCH" == "$CI_DEFAULT_BRANCH" ]]; then
+        tag=""
+        echo "Running on default branch '$CI_DEFAULT_BRANCH': tag = 'latest'"
+      else
+        tag=":$CI_COMMIT_REF_SLUG"
+        echo "Running on branch '$CI_COMMIT_BRANCH': tag = $tag"
+      fi
+    - docker build -t $CI_REGISTRY_IMAGE_NAME${tag} .
+    - docker push $CI_REGISTRY_IMAGE_NAME${tag}
+
