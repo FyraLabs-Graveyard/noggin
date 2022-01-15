@@ -17,7 +17,7 @@ def rando(percentage):
 
 
 groups = {
-    "developers": 80,
+    "developers": 20,
     "designers": 30,
     "elections": 10,
     "infra": 20,
@@ -27,7 +27,7 @@ groups = {
 }
 
 # Add heaps of groups
-for word in fake.words(nb=600, unique=True):
+for word in fake.words(nb=5, unique=True):
     groups["sysadmin-" + word] = 5
     groups["z-git-" + word] = 5
 
