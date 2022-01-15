@@ -10,3 +10,43 @@ The primary purpose of the portal is to allow users to sign up and manage their
 account information and group membership.
 
 The documentation is available online at https://noggin-aaa.readthedocs.io/
+
+# Deploying using Docker/Podman
+
+To deploy noggin using Docker/Podman run the following command:
+```
+docker run\
+ -e "DOMAIN=example.com"\
+ -e "IPA_SERVER=ipa.example.com"\
+ -e "REALM=EXAMPLE.COM"\
+ -e "IPA_ADMIN_USERNAME=admin"\
+ -e "IPA_ADMIN_PASSWORD=admin"\
+ -v /opt/noggin/noggin.cfg:./noggin.cfg\
+ -h noggin.example.com\
+ -p 5000:5000\
+ --name noggin\
+ --restart=always\
+ korewachino/noggin:latest
+```
+
+This will put the noggin server in the background and expose it on port 5000.
+
+You can also use this following docker-compose file to deploy noggin:
+```
+version: '3'
+services:
+    noggin:
+        image: korewachino/noggin
+        ports:
+            - 5000:5000
+        volumes:
+            - /opt/noggin/noggin.cfg:./noggin.cfg
+        hostname: noggin.example.com
+        restart: unless-stopped
+        environment:
+            - DOMAIN=example.com
+            - IPA_SERVER=ipa.example.com
+            - REALM=EXAMPLE.COM
+            - IPA_ADMIN_USERNAME=admin
+            - IPA_ADMIN_PASSWORD=admin
+```
