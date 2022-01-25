@@ -42,14 +42,3 @@ tox-covclean:
     - microdnf install -y python3-pip python3-devel python3-virtualenv tox git
     - tox -e covclean
 
-tox-testenv:
-  only:
-    - stable
-    - dev
-  stage: test
-  image: registry.fedoraproject.org/fedora-minimal:latest
-  # simply just run the docker image
-  script:
-    - microdnf install -y python3-pip python3-devel python3-virtualenv tox git
-    - tox -e testenv
-
