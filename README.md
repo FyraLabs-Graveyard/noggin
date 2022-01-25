@@ -41,12 +41,7 @@ services:
             - 5000:5000
         volumes:
             - /opt/noggin/noggin.cfg:./noggin.cfg
+            - /etc/ipa/ca.crt:/etc/ipa/ca.crt
         hostname: noggin.example.com
         restart: unless-stopped
-        environment:
-            - DOMAIN=example.com
-            - IPA_SERVER=ipa.example.com
-            - REALM=EXAMPLE.COM
-            - IPA_ADMIN_USERNAME=admin
-            - IPA_ADMIN_PASSWORD=admin
 ```
